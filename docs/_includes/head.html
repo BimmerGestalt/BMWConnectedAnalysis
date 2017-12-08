@@ -1,0 +1,33 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="{{ site.description }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+
+    <!-- Custom JS -->
+    <!-- sequence diagrams -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.0/mermaid.js"></script>
+    <script>
+mermaid.initialize({startOnLoad:false});
+document.addEventListener("DOMContentLoaded", function(event) {
+    var elements = document.querySelectorAll('.mermaid code');
+    for (var i=0; i<elements.length; i++) {
+      var e = elements[i];
+      var container = e.parentNode;
+      // get the diagram definition
+      var txt = document.createElement("textarea");
+      txt.innerHTML = e.innerHTML;
+      var diagram = txt.value.trim();
+      // fill in with the diagram
+      var result = mermaid.render('mermaid'+i, diagram, function(){}, container);
+      container.innerHTML = result;
+    }
+});
+</script>
+
+</head>

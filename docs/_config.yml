@@ -1,0 +1,11 @@
+# Site settings
+title: BMW Connected Reverse Engineering
+email: hufman@gmail.com
+description: "Experiments to figure out how BMW Connected functions and how to extend its functionality with user-custom applications"
+baseurl: "/BMWConnectedAnalysis"
+url: "https://hufman.github.io"
+github_username:  hufman
+
+# Build settings
+markdown: kramdown
+permalink: pretty
