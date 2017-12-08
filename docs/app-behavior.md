@@ -22,7 +22,7 @@ App ->> Car: Etch Connection
 ```
 {: class="mermaid"}
 
-Once it is connected and the [BCL]({% link protocol-bcl.md %}) tunnel is established, the main BMW Connected app broadcasts an Android intent encouraging the actual Connected Apps to connect to the tunnel endpoint and begin talking the [Etch]({% link protocol-etch.md %}) protocol virtually directly to the car.
+Once it is connected and the [BCL]({{ site.baseurl }}{% link protocol-bcl.md %}) tunnel is established, the main BMW Connected app broadcasts an Android intent encouraging the actual Connected Apps to connect to the tunnel endpoint and begin talking the [Etch]({{ site.baseurl }}{% link protocol-etch.md %}) protocol virtually directly to the car.
 
 The broadcast Intent `com.bmwgroup.connected.accessory.ACTION_CAR_ACCESSORY_ATTACHED` has the following extra attributes:
 
