@@ -49,7 +49,8 @@ A common paradigm looks like:
         </actions>
     </combinedAction>
 
-Somewhere in the list of `toolbarComponents` or the `entryButton`, there is an `action="381"`. When that button is pressed, the phone app will receive an `rhmi_onActionEvent` callback where the actionId=382 (from the `raAction`). Now, the app will call `rhmi_setData` and pass `model=384, value=16` to update the related `<raDataModel id="384">` to the desired `hmiState` (in this case, id="16") that should be shown. When the app finishes handling the event by calling `rhmi_ackActionEvent`, the iDrive will present the chosen `hmiState`.
+Somewhere in the list of `toolbarComponents` or the `entryButton`, there is an `action="381"`. When that button is pressed, the phone app will receive an `rhmi_onActionEvent` callback where the actionId=382 (from the `raAction`). Now, the app will call `rhmi_setData` and pass `model=384, value=16` to update the related `<raIntModel id="384">` to the desired `hmiState` (in this case, id="16") that should be shown. When the app finishes handling the event by calling `rhmi_ackActionEvent`, the iDrive will present the chosen `hmiState`.
+A variation of this uses an `hmiAction` with a `target` instead of a `targetModel`. This target refers directly to an `hmiState` by ID, instead of pointing to a `raIntModel` that holds the hmiState's ID.
 
 
 ### Models
@@ -85,12 +86,13 @@ States can additionally contain `<properties>` and `<optionComponents>`.
 Every component has an `id` parameter, and the behavior can be modified by these component-specific attributes and properties.
 
 | Name | Attributes | Properties |
-| label | `model` | `SELECTABLE` `VISIBLE` `WIDTH` `HEIGHT` `POSITION_X` `POSITION_Y` |
-| list | `model` `action` `selectAction` | `SELECTABLE` `VISIBLE` `LIST_COLUMNWIDTH` |
-| button | `model` `tooltipModel` `imageModel` `action` `selectAction` | `ENABLED` `SELECTABLE` |
-| image | `model` | `WIDTH` `HEIGHT` `POSITION_X` `POSITION_Y` |
+| label | `model:textIdModel|raDataModel` | `SELECTABLE` `VISIBLE` `WIDTH` `HEIGHT` `POSITION_X` `POSITION_Y` |
+| list | `model:raListModel` `action:raAction` `selectAction:raAction` | `SELECTABLE` `VISIBLE` `LIST_COLUMNWIDTH` |
+| button | `model:textIdModel` `tooltipModel:textIdModel` `imageModel:imageIdModel` `action:combinedAction` `selectAction:raAction` | `ENABLED` `SELECTABLE` |
+| checkbox | `model:raBoolModel` `textModel:raDataModel` `action:raAction` | `VISIBLE` |
+| image | `model:imageIdModel|raImageModel` | `WIDTH` `HEIGHT` `POSITION_X` `POSITION_Y` |
 | separator | | |
-| gauge | `model` `textModel` `action` `changeAction` | `WIDTH` `HEIGHT` `POSITION_X` `POSITION_Y` |
+| gauge | `model:raGaugeModel` `textModel:raDataModel` `action:raAction` `changeAction:raAction` | `WIDTH` `HEIGHT` `POSITION_X` `POSITION_Y` |
 
 Note that the `image` component does not do any image resizing, and will just crop the image. The mobile app must handle any resizing.
 
