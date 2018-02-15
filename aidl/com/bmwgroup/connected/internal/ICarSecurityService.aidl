@@ -1,6 +1,11 @@
 package com.bmwgroup.connected.internal.security;
 
 // BMW Connected Classic registers this under Intent("com.bmwgroup.connected.bmw.usa.SECURITY_SERVICE").setPackage("com.bmwgroup.connected.bmw.usa")
+// BMW Connected registers this under Intent("de.bmw.connected.SECURITY_SERVICE")
+// BMW Connected (NA) registers this under Intent("de.bmw.connected.na.SECURITY_SERVICE")
+// MINI Connected Classic registers this under Intent("com.bmwgroup.connected.mini.usa.SECURITY_SERVICE")
+// MINI Connected registers this under Intent("de.mini.connected.SECURITY_SERVICE")
+// MINI Connected (NA) registers this under Intent("de.mini.connected.na.SECURITY_SERVICE")
 
 interface ICarSecurityService {
     /**
