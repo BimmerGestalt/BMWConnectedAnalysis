@@ -40,17 +40,7 @@ Each app defines a big list of `<actions>` at the top, containing multiple child
 - `<linkAction>` which can contain an `actionType` attribute such as `navigate` or `call`, along with a `linkModel` attribute
 - `<hmiAction>` contains a `targetModel` attribute, and that model contains an ID of a `State` to show
 
-A common paradigm looks like:
-
-    <combinedAction id="381" sync="true">
-        <actions>
-            <raAction id="382"/>
-            <hmiAction id="383" targetModel="384"/>
-        </actions>
-    </combinedAction>
-
-Somewhere in the list of `toolbarComponents` or the `entryButton`, there is an `action="381"`. When that button is pressed, the phone app will receive an `rhmi_onActionEvent` callback where the actionId=382 (from the `raAction`). Now, the app will call `rhmi_setData` and pass `model=384, value=16` to update the related `<raIntModel id="384">` to the desired `hmiState` (in this case, id="16") that should be shown. When the app finishes handling the event by calling `rhmi_ackActionEvent`, the iDrive will present the chosen `hmiState`.
-A variation of this uses an `hmiAction` with a `target` instead of a `targetModel`. This target refers directly to an `hmiState` by ID, instead of pointing to a `raIntModel` that holds the hmiState's ID.
+More details about actions and events can be found [here]({% link rhmi-events.md %}).
 
 
 ### Models
@@ -93,6 +83,7 @@ Every component has an `id` parameter, and the behavior can be modified by these
 | image | `model:imageIdModel|raImageModel` | `WIDTH` `HEIGHT` `POSITION_X` `POSITION_Y` |
 | separator | | |
 | gauge | `model:raGaugeModel` `textModel:raDataModel` `action:raAction` `changeAction:raAction` | `WIDTH` `HEIGHT` `POSITION_X` `POSITION_Y` |
+| input | `textModel:raDataModel` `action:raAction` `resultModel:raDataModel` `resultAction:combinedAction` `suggestModel:raListModel` `suggestAction:combinedAction` | |
 
 Note that the `image` component does not do any image resizing, and will just crop the image. The mobile app must handle any resizing.
 
