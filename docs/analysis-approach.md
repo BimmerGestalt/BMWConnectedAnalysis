@@ -38,7 +38,7 @@ Because Android apps can be converted losslessly back to .class files and then b
 
 1. Extract the classes.dex file from the original apk. Note that some APKs have multiple dex archives, but only the one with the desired class file needs to be extracted
 2. Use the `d2j-dex2jar` command to convert that dex file to a jar file
-3. Locate the class file to be modified, perhaps by using decompilation techniques. For example, BMW Connected Classic's `com.bmwgroup.connected.internal.util.Logger` has a line `private static int h = 7` which specifies the logging threshold, while the new BMW Connected has a `com.bmwgroup.connected.logger.Logger` class with a similar `protected static int LEVEL = 7` line.
+3. Locate the class file to be modified, perhaps by using decompilation techniques. For example, BMW Connected Classic's `com.bmwgroup.connected.internal.util.Logger` has a line `private static int h = 7` which specifies the logging threshold
 4. Open the file in a classfile editor of your choice, such as dirtyJOE or ce Class Editor.
 5. Make the desired changes. In this example, there is a `<clinit>` method that initializes that static field. Assuming some familiarity with Java disassembly, one can identify the `bipush` command to load a constant onto the stack and then `putstatic` command to put that constant int othe class member.
 6. Put that modified class file back into the jar file
@@ -50,3 +50,7 @@ Because Android apps can be converted losslessly back to .class files and then b
  The above assumes that a keystore already exists, if not run this: `keytool.exe -genkey -v -keystore <myKeystore> -alias <myKeyAlias> -sigalg MD5withRSA -keyalg RSA -keysize 2048 -validity 10000`
 
 However, the app is very chatty! Logcat may start showing messages saying something like: `1799 12017 I logd: uid=10007 chatty ... expire 4 lines`. This means that Android is dropping log messages from this excessively-logging app. To resolve this, run `adb logcat -P ""`.
+
+In the new BMW/Mini Connected app, the default is at `com.bmwgroup.connected.logger.Logger.LEVEL`. Additionally, inside `de.bmw.connected.app.BMWOneBaseApplication` or `de.mini.connected.MINIOneBaseApplication`, there is a function named `b()` that calls `this.configureA4A`, and the last integer value to that call specifies a logging level.
+
+Another fun unrelated trick is the `com.bmwgroup.connected.core.am.ApplicationManagerCarApplication.startAllApps()` function, which refuses to enable external audio apps such as Spotify if it thinks it is running over USB. Disabling this check enables full functionality, but perhaps some phones don't support USB Audio output.
