@@ -27,6 +27,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
       var result = mermaid.render('mermaid'+i, diagram, function(){}, container);
       container.innerHTML = result;
     }
+
+    <!-- pretty print json -->
+    var elements = document.querySelectorAll('td');
+    for (var i=0; i<elements.length; i++) {
+      var e = elements[i];
+      if (e.innerHTML.length > 0 && e.innerHTML.substr(0, 1) == '{') {
+        try {
+          data = JSON.parse(e.innerHTML);
+          e.innerHTML = '<pre>' + JSON.stringify(data, null, "  ") + '</pre>';
+        } catch (e) { // failed to parse as json
+        }
+      }
+    }
 });
 </script>
 

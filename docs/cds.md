@@ -61,7 +61,7 @@ Then, the car will call the client callback method `cds_onPropertyChangedEvent(h
 | 44 | driving.steeringWheel | |
 | 45 | driving.mode | {"mode":3} |
 | 46 | engine.consumption | {"consumption":0} |
-| 47 | engine.info | {"info":{"numberOfGears":6,"numberOfCylinders":4,"fuelType":4,"gearboxType":0,"displacement":2000} |
+| 47 | engine.info | {"info":{"numberOfGears":6,"numberOfCylinders":4,"fuelType":4,"gearboxType":0,"displacement":2000}} |
 | 50 | engine.RPMSpeed | |
 | 51 | engine.status | |
 | 52 | engine.temperature | |
@@ -117,7 +117,7 @@ Then, the car will call the client callback method `cds_onPropertyChangedEvent(h
 | 107 | sensors.seatOccupiedRearRight | |
 | 108 | vehicle.systemTime | |
 | 109 | vehicle.time | |
-| 110 | driving.drivingStyle | {"accelerate":0.0,"brake":0.0,"shift":0.0,} |
+| 110 | driving.drivingStyle | {"accelerate":0.0,"brake":0.0,"shift":0.0} |
 | 111 | driving.displayRangeElectricVehicle | |
 | 112 | navigation.routeElapsedInfo | |
 | 113 | hmi.tts | |

@@ -9,3 +9,6 @@ github_username:  hufman
 # Build settings
 markdown: kramdown
 permalink: pretty
+
+kramdown:
+  smart_quotes: ["apos", "apos", "quot", "quot"]
