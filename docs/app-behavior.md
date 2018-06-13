@@ -10,7 +10,7 @@ BMW Connected starts up some services and waits for either a USB Accessory conne
 
 BMW Connected Classic only provides a set of internal apps, and does not provide an official way to add external apps.
 
-In contrast, the new BMW Connected app has a full discovery system to locate companion apps. It seems that CarAPI is the name of the discovery method for external apps, such as Spotify, while ConnectedSDK is the internal one used by apps packaged inside the BMW Connected package.
+In contrast, the new BMW Connected app has a full discovery system to locate companion apps. It seems that [CarAPI]({{ site.baseurl }}{% link carapi.md %}) is the name of the discovery method for external apps, such as Spotify, while ConnectedSDK is the internal one used by apps packaged inside the BMW Connected package.
 
 #### ConnectedSDK
 
@@ -82,6 +82,7 @@ External applications using the CarAPI are started with the `EXTRA_APPLICATION_C
 | `instance_id` | int | The USB port that the car thinks we are attached to |
 | `security_service` | int | The Service Intent name to reach the security service, such as `de.bmw.connected.na.SECURITY_SERVICE` |
 
+Notably, CarAPI apps do not connect directly to the Etch proxy port, but instead rely on an Intent-based RPC system to request that Connected manage the connection on their behalf. This RPC system has all the names intact, and may be a useful way to trace high-level behaviors into Etch requests.
 
 ### Authentication
 
