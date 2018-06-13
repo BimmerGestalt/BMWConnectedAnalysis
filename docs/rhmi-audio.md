@@ -16,10 +16,12 @@ participant BMWApp as BMW Connected
 participant Car as BMW Car
 BMWApp ->> Car: av_create(instanceID: int, name:string)
 Car ->> BMWApp: _result_av_create(handle:int)
+Note right of BMWApp: User selects an app in the dashboard
 BMWApp ->> Car: av_requestConnection(name:string, connectionType:AVConnectionType)
 Car ->> BMWApp: _result_av_requestConnection()
+Note right of BMWApp: Car begins listening to the phone for audio
 Car ->> BMWApp: av_connectionGranted(handle:int, connectionType:AVConnectionType)
-Note right of BMWApp: User selects an app in the dashboard
+Note right of BMWApp: Car requests that music should begin playing
 Car ->> BMWApp: av_requestPlayerState(handle:int, connectionType:AVConnectionType, playerState:AVPlayerState)
 BMWApp ->> Car: av_playerStateChanged(handle:int, connectionType:AVConnectionType, playerState:AVPlayerState)
 BMWApp ->> Car: _result_av_playerStateChanged()
@@ -47,10 +49,12 @@ participant Car as BMW Car
 App -->> BMWApp: Intent("com.bmwgroup.connected.app.ACTION_CAR_AUDIO_FOCUS_REQUEST")
 BMWApp ->> Car: av_create(name:string)
 Car ->> BMWApp: _result_av_create(handle:int)
+Note right of BMWApp: User selects the app in the dashboard
 BMWApp ->> Car: av_requestConnection(name:string, connectionType:AVConnectionType)
 Car ->> BMWApp: _result_av_requestConnection()
+Note right of BMWApp: Car begins listening to the phone for audio
 Car ->> BMWApp: av_connectionGranted(handle:int, connectionType:AVConnectionType)
-Note right of BMWApp: User selects the app in the dashboard
+Note right of BMWApp: Car requests that music should begin playing
 Car ->> BMWApp: av_requestPlayerState(handle:int, connectionType:AVConnectionType, playerState:AVPlayerState)
 BMWApp ->> Car: av_playerStateChanged(handle:int, connectionType:AVConnectionType, playerState:AVPlayerState)
 BMWApp ->> Car: _result_av_playerStateChanged()
@@ -64,8 +68,13 @@ At any point, an RHMI app can trigger a `statusbarEvent` to replace displayed mu
 Based on an event definition such as: `<statusbarEvent id="577" textModel="571"/>`, the app would do the following steps:
 
 1. `setData(571, "App Name")`	stages the app name into an RaDataModel
-2. `Map args = new HashMap(); args.put(0, null)`	prepares an arguments payload, it always contains `{0:null}`
+2. `Map args = new HashMap(); args.put(0, null);`	prepares an arguments payload, it always contains `{0:null}`
 3. `rhmi_triggerEvent(577, args);`	takes over the status label with this app's information
+
+Similarly, the RHMI app should trigger the `notificationIconEvent`, to update the displayed music player icon alongside the status bar. This event typically points to a hard-coded imageIdModel, and does not need to be changed to point a different icon. For example, based on `<notificationIconEvent id="4" imageIdModel="62"/>`:
+
+1. `Map args = new Hashmap(); args.put(0, true);`
+2. `rhmi_triggerEvent(4, args);`
 
 ### Currently Playing Song Display
 
@@ -83,3 +92,8 @@ Alternatively, if the app is relying on BMW Connected to manage the audio contex
 | `EXTRA_APPLICATION_ID` | String | The name of the app that has the audio context, and that this event is intended for |
 | `EXTRA_MULTIMEDIA_BUTTON_EVENT` | int | A number from 0-4, representing an enum of: `AV_EVENT_SKIP_DOWN, AV_EVENT_SKIP_UP, AV_EVENT_SKIP_LONG_UP, AV_EVENT_SKIP_LONG_DOWN, AV_EVENT_SKIP_LONG_STOP` |
 
+### Resuming Music Playback
+
+The car remembers which audio context was last active when it is turned off, and waits for that audio context to show back up when the car is turned on again.
+
+After the app is initialized, and it calls `av_create`, the car will notice if the given name matches the previously-remembered audio context. If so, the app will automatically receive an `av_connectionGranted` callback, even without needing to call `av_requestConnection`. The car may also call `av_requestPlayerState` to initiate playback.
