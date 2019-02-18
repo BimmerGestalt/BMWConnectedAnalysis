@@ -34,7 +34,7 @@ A variation of this uses an `hmiAction` with a `target` instead of a `targetMode
 Each `<pluginApp>` also contains a `<events>` node with some unique functonality. These `events` each have an ID, which is passed to `rhmi_triggerEvent` to trigger associated functionality.
 
 - `<actionEvent>` contains an `action` attribute with the ID of a `<linkAction>` to trigger. This can be used to start navigation or a phonecall.
-- `<focusEvent>` contains a `targetModel` attribute, referring to a model containing the ID of the component to focus on
+- `<focusEvent>` contains a `targetModel` attribute, which is ignored. The args object in the `rhmi_triggerEvent` command will have `{0:ID}` with the ID of the component to focus on. This can be used to focus on other states within the app without the user triggering a `<combinedAction>`
 - `<multimediaInfoEvent>` contains both a `textModel1` and a `textModel2` attribute. This sets the song title and artist that is seen in the instrument cluster, and perhaps other places.
 - `<notificationIconEvent>` contains an `imageIdModel`, which sets the system-wide icon depicting the currently-playing music source.
 - `<popupEvent>` contains a `target` `<popupHmiState>` to show and a `priority` to enforce order
