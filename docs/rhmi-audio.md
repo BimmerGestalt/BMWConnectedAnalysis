@@ -30,6 +30,8 @@ Car ->> BMWApp: av_multimediaButtonEvent(handle:int, event:AVButtonEvent)
 ```
 {: class="mermaid"}
 
+The `instanceID` has to be valid and must be no greater than the current ID that is found in the `ACTION_CAR_ACCESSORY_ATTACHED` announcement, or else the car will send `av_connectionDenied` in response to `av_requestConnection`.
+
 ### Connected Apps - Creating the Audio Focus
 
 When a multimedia Connected app starts, it sends out a broadcast intent named `com.bmwgroup.connected.app.ACTION_CAR_AUDIO_FOCUS_REQUEST`. This intent contains some metadata about the multimedia app:
