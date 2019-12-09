@@ -42,6 +42,12 @@ Each `<pluginApp>` also contains a `<events>` node with some unique functonality
 
 The events require a Map to be passed, but generally it is sufficient to be merely `{0:null}`. One exception is the `<notificationIconEvent>`, which needs to be passed `{0:true}`.
 
+#### Updating a list's selected index
+
+1. Locate the `<focusEvent>` event from the UI Description, and note the `id` attribute as the `eventId`
+2. Prepare a map of params that looks something like `{0:[listId], 41:[selectedListIndex]}`
+3. Call `rhmi_triggerHMIEvent(appHandle, eventId, params)`
+
 ### Received HMI Events
 
 The app can also receive a set of HMI Events through `rhmi_onHmiEvent` at any time. These events are generally associated with global widget state, such as a HMIState becoming visible, or a component gaining focus. The events have an rhmi `handle`, a relevant `componentId`, an `eventId` from the following table, and a map of `args`.
@@ -106,9 +112,3 @@ HMIEvent parameters can also be found in triggerHMIEvent calls.
 | 41 | `HMIEVENT_PARAM_LISTINDEX` |
 | 42 | `ACTION_PARAM_SELECTIONTEXT` |
 | 43 | `ACTION_PARAM_INVOKEDBY` |
-
-#### Updating a list's selected index
-
-1. Locate the `<focusEvent>` event from the UI Description, and note the `id` attribute as the `eventId`
-2. Prepare a map of params that looks something like `{0:[listId], 41:[selectedListIndex]}`
-3. Call `rhmi_triggerHMIEvent(appHandle, eventId, params)`
