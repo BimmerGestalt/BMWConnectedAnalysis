@@ -42,6 +42,11 @@ Each `<pluginApp>` also contains a `<events>` node with some unique functonality
 
 The events require a Map to be passed, but generally it is sufficient to be merely `{0:null}`. One exception is the `<notificationIconEvent>`, which needs to be passed `{0:true}`.
 
+#### Displaying a popup
+
+1. Locate the `<popupEvent>` event. This event has a `target` attribute pointing to a `<popupHmiState>` by ID.
+2. Trigger the popupEvent with '{0:true}' to show it, and '{0:false}' to hide it.
+
 #### Updating a list's selected index
 
 1. Locate the `<focusEvent>` event from the UI Description, and note the `id` attribute as the `eventId`
