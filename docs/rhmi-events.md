@@ -53,6 +53,13 @@ The events require a Map to be passed, but generally it is sufficient to be mere
 2. Prepare a map of params that looks something like `{0:[listId], 41:[selectedListIndex]}`
 3. Call `rhmi_triggerHMIEvent(appHandle, eventId, params)`
 
+#### Begin navigation
+
+1. Locate the `<actionEvent>` that points to a `<linkAction actionType="navigate">` by ID.
+2. The linkAction's `linkModel` attribute points to a `<raDataModel modelType="Address">`.
+3. Set this `linkModel` to the destination address, formatted in this style: `[lastName];[firstName];[street];[houseNumber];[zipCode];[city];[country];[latitude];[longitude];[poiName]`. The latitude and longitude are formatted by calculating the degrees divided by 360 multiplied by INT\_MAX.
+4. Trigger the actionEvent with '{0:null}' to begin the navigation.
+
 ### Received HMI Events
 
 The app can also receive a set of HMI Events through `rhmi_onHmiEvent` at any time. These events are generally associated with global widget state, such as a HMIState becoming visible, or a component gaining focus. The events have an rhmi `handle`, a relevant `componentId`, an `eventId` from the following table, and a map of `args`.
