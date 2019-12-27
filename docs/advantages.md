@@ -1,7 +1,8 @@
 ---
 layout: page
-title: Benefits
-permalink: /benefits/
+title: Advantages
+permalink: /advantages/
+redirect_from: /benefits/
 ---
 
 The BMW/Mini Connected Apps protocol provides some unique features that aren't commonly found in other cars. When compared to the de facto automotive screen mirroring standards (Android Auto, Apple CarPlay, and MirrorLink), this protocol provides tighter integration and a few extra special advantages.

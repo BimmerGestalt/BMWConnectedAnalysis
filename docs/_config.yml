@@ -10,5 +10,9 @@ github_username:  hufman
 markdown: kramdown
 permalink: pretty
 
+
+plugins:
+  - jekyll-redirect-from
+
 kramdown:
   smart_quotes: ["apos", "apos", "quot", "quot"]
