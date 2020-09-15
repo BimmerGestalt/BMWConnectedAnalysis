@@ -121,7 +121,7 @@ Then, the car will call the client callback method `cds_onPropertyChangedEvent(h
 | 111 | driving.displayRangeElectricVehicle | {"displayRangeElectricVehicle":4095} |
 | 112 | navigation.routeElapsedInfo | |
 | 113 | hmi.tts | {"TTSState":{"state":1,"currentblock":-2,"blocks":0,"type":"","languageavailable":1}} |
-| 114 | hmi.graphicalContext | {"error":400} |
+| 114 | hmi.graphicalContext | {"graphicalContext":{"visibleContext":20,"focusIndex":100035,"listIndex":15,"widgetType":"LT\_Button\_1Row\_1CheckLeft\_1IconLeft","enabled":"1","selected":"0","menuTitle":"Media/Radio","appType":"1","shiftDirections":"L","scrollDirection":"vertical"}} |
 | 115 | sensors.PDCRangeFront2 | {"error":400} |
 | 116 | sensors.PDCRangeRear2 | {"error":400} |
 | 117 | cds.apiRegistry | {"error":400} |
