@@ -71,6 +71,31 @@ An RHMI App is split into several different states, which act as windows, and th
 Each `state` contains a `<components>` node containing nodes to represent each graphical widget, termed a `component`.
 States can additionally contain `<properties>` and `<optionComponents>`.
 
+#### Audio HMI State
+
+ID5+ additionally supports an `<audioHmiState>` high-level state which omits a list of components, and instead has a list of semantic models for the car to place and style as needed.
+
+| Attribute | Example | Description |
+| textModel | "iHeartRadio" | The title of the screen |
+| statusBarImageModel | IMAGEID | Perhaps shows the app icon in the status bar |
+| providerLogoImageModel | IMAGEDATA | Shows the app icon in the playback screen |
+| artistImageModel | IMAGEDATA | The icon next to the artistTextModel |
+| artistTextModel | "Artist" | First row of the playback screen, shows up in the Multimedia sidebar |
+| albumImageModel | IMAGEDATA | The icon next to the albumTextModel |
+| albumTextModel | "Album" | Second row of the playback screen |
+| trackTextModel | "Title" | Shows up in the Multimedia sidebar |
+| alternativeTextModel | " \n \n " | 3 text lines joined by newlines, not seen in the wild |
+| coverImageModel | IMAGEDATA | The track's cover art, shows in the sidebar and the home screen |
+| currentTimeModel| "0:00" | Supposedly the left side of a progress bar |
+| elapsingTimeModel | "2:30" | Supposedly the right side of a progress bar |
+| playListModel | RHMIDataTable | A list of elements to show in the middle of the screen, such as Back/Title/Next |
+| playListFocusRowModel | 1 | An index for the car to use as the highlighted row of the playlist |
+| playListTextModel | "" | The text to show when the playlist is empty |
+| playListProgressTextModel | "" | |
+| playbackProgressModel | 0.5 | A percentage of progress, from 0.0 to 1.0 |
+
+The `playListModel` has a format for each row: `[isAnimationEnabled, leftImage, firstText, firstRightImage, firstRightImageVisible, secondRightImage, secondRightImageVisible, secondText, secondTextVisible, isItemEnabled]`
+
 ### Components
 
 Every component has an `id` parameter, and the behavior can be modified by these component-specific attributes and properties.
