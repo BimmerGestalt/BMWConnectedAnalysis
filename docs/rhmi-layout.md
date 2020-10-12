@@ -86,8 +86,8 @@ ID5+ additionally supports an `<audioHmiState>` high-level state which omits a l
 | trackTextModel | "Title" | Shows up in the Multimedia sidebar |
 | alternativeTextModel | " \n \n " | 3 text lines joined by newlines, not seen in the wild |
 | coverImageModel | IMAGEDATA | The track's cover art, shows in the sidebar and the home screen |
-| currentTimeModel| "0:00" | Supposedly the left side of a progress bar |
-| elapsingTimeModel | "2:30" | Supposedly the right side of a progress bar |
+| currentTimeModel| "0:00" | Te left side of a progress bar, visible when the sidebar is hidden |
+| elapsingTimeModel | "2:30" | Te right side of a progress bar |
 | playListModel | RHMIDataTable | A list of elements to show in the middle of the screen, such as Back/Title/Next |
 | playListFocusRowModel | 1 | An index for the car to use as the highlighted row of the playlist |
 | playListTextModel | "" | The text to show when the playlist is empty |
