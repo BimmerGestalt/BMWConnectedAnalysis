@@ -27,9 +27,14 @@ The main XML layout file, termed `DESCRIPTION`, is broken into several parts. Th
 
 `pluginApp` types:
 
-- OnlineServices
-- radio
 - Addressbook
+- Multimedia
+- Navigation
+- OnlineServices
+- Phone
+- Radio
+- Settings
+- VehicleInformation
 
 ### Actions
 
