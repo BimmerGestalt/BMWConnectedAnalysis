@@ -159,9 +159,9 @@ These definitions are found in `com.bmwgroup.connected.internal.ui.RhmiPropertyT
 | 50 | `TERMINALUI_SET_TUIMODE` | |
 | 51 | `GET_VALUES` | |
 | 52 | `TERMINALUI_SET_TUIUSER` | |
-| 53 | `CHECKED` | |
+| 53 | `CHECKED` | `true` `false` seen on toolbar buttons |
 | 55 | `UUID` | |
-| 56 | `MODAL` | |
+| 56 | `MODAL` | An index from an enum with these values: [`NO_RESTRICTIONS`, `DISABLE_LEFT_SHIFT`, `DISABLE_STATE_REQUEST`, `DISABLE_LEFT_SHIFT_AND_STATE_REQUEST`] |
 
 Some properties, such as `POSITION_X` and `POSITION_Y`, can contain a child node `<condition conditionType="LAYOUTBAG">`. This is perhaps to support dynamic positioning based on the size of the viewport. For example:
 
