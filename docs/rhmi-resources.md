@@ -140,28 +140,19 @@ These definitions are found in `com.bmwgroup.connected.internal.ui.RhmiPropertyT
 | 14 | `TERMINALUI_AUDIOMODE` | |
 | 15 | `TERMINALUI_VIDEOMODE` | |
 | 16 | `TERMINALUI_LEAVE` | |
-| 17 | `ALIGNMENT` | |
+| 17 | `ALIGNMENT` | An index from an enum with these values: [`LEFT_TOP`, `CENTER_TOP`, `RIGHT_TOP`, `LEFT_CENTER`, `CENTER_CENTER`, `RIGHT_CENTER`, `LEFT_BOTTOM`, `CENTER_BOTTOM`, `RIGHT_BOTTOM`] |
 | 18 | `OFFSET_X` | |
 | 19 | `OFFSET_Y` | |
 | 20 | `POSITION_X` | `0` |
 | 21 | `POSITION_Y` | `0` |
-| 22 | `BOOKMARKABLE` | |
-| 23 | `SPEAKABLE` | |
+| 22 | `BOOKMARKABLE` | `true` `false` |
+| 23 | `SPEAKABLE` | An index from an enum with these values: [`NOT_SPEAKABLE`, `LOCALLY_SPEAKABLE`, `GLOBALLY_SPEAKABLE`] |
 | 24 | `HMISTATE_TABLETYPE` | `3` |
 | 25 | `CURSOR_WIDTH` | |
 | 26 | `HMISTATE_TABLELAYOUT` | |
 | 35 | `TOOLBARHMISTATE_PAGING_LIMITED` | |
-| 36 | `SPEEDLOCK` | |
-| 37 | `CUTTYPE` | `0` |
-| 38 | `TABSTOPOFFSET` | |
-| 39 | `BACKGROUND` | |
-| 40 | `TERMINALUI_REGISTER_INPUTEVENT` | |
-| 41 | `TERMINALUI_DEREGISTER_INPUTEVENT` | |
-| 42 | `LIST_RICHTEXT_MAX_ROWCOUNT` | |
-| 43 | `LIST_RICHTEXT_LAST_LINE_WITH_THREE_DOTS` | |
-| 44 | `TERMINALUI_SET_CONTRAST` | |
-| 45 | `TERMINALUI_SET_BRIGHTNESS` | |
-| 46 | `TERMINALUI_SET_COLOR` | |
+| 36 | `SPEEDLOCK` | `true` `false` |
+| 37 | `CUTTYPE` | An index from an enum with these values: [`DOTS`, `NO_CUTTING`, `WORDS_DOTS`, `BACKWARDS_DOTS`, `WORDS_AUTO_STATIC_TEXT`, `WORDS_AUTO_DYNAMIC_TEXT`] |
 | 47 | `TERMINALUI_SET_TINT` | |
 | 48 | `TERMINALUI_STATUSBAR` | |
 | 49 | `TERMINALUI_VIDEOVISIBLE` | |
