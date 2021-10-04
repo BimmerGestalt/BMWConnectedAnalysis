@@ -124,6 +124,8 @@ HMIEvent parameters can also be found in triggerHMIEvent calls.
 | 41 | `HMIEVENT_PARAM_LISTINDEX` | |
 | 42 | `ACTION_PARAM_SELECTIONTEXT` | |
 | 43 | `ACTION_PARAM_INVOKEDBY` | |
-| 45 | ACTION\_PARAM\_PROGRESS\_POSITION | Undocumented, the 1-100 position of an AudioHmiState Progress RAAction |
-| 46 | ACTION\_PARAM\_PROGRESS\_PENDING | Undocumented, a Progress RAAction emits this to signal start/stop of a Progress RAAction |
+| 45 | `ACTION\_PARAM\_PROGRESS\_POSITION`? | Undocumented, the 1-100 position of an AudioHmiState Progress RAAction |
+| 46 | `ACTION\_PARAM\_PROGRESS\_PENDING`? | Undocumented, a Progress RAAction emits this to signal start/stop of a Progress RAAction |
+| 56 | `HMIEVENT_PARAM_PADFOCUSEVENT_OVERRIDEMASK` | Something for an unknown CarPadView component named `pad` |
+| 57 | `HMIEVENT_PARAM_PADFOCUSEVENT_TIMEOUT` | Something for an unknown CarPadView component named `pad` |
 | 99 | Unknown | Emitted as true for the AudioHmiState's Artist Action and Album Action when the labels are touched |
