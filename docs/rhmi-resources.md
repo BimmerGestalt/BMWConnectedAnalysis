@@ -153,6 +153,15 @@ These definitions are found in `com.bmwgroup.connected.internal.ui.RhmiPropertyT
 | 35 | `TOOLBARHMISTATE_PAGING_LIMITED` | |
 | 36 | `SPEEDLOCK` | `true` `false` |
 | 37 | `CUTTYPE` | An index from an enum with these values: [`DOTS`, `NO_CUTTING`, `WORDS_DOTS`, `BACKWARDS_DOTS`, `WORDS_AUTO_STATIC_TEXT`, `WORDS_AUTO_DYNAMIC_TEXT`] |
+| 38 | `TABSTOPOFFSET` | `1` |
+| 39 | `BACKGROUND` | `1` |
+| 40 | `TERMINALUI_REGISTER_INPUTEVENT` | |
+| 41 | `TERMINALUI_DEREGISTER_INPUTEVENT` | |
+| 42 | `LIST_RICHTEXT_MAX_ROWCOUNT` | |
+| 43 | `LIST_RICHTEXT_LAST_LINE_WITH_THREE_DOTS` | `-1` |
+| 44 | `TERMINALUI_SET_CONTRAST` | |
+| 45 | `TERMINALUI_SET_BRIGHTNESS` | |
+| 46 | `TERMINALUI_SET_COLOR` | |
 | 47 | `TERMINALUI_SET_TINT` | |
 | 48 | `TERMINALUI_STATUSBAR` | |
 | 49 | `TERMINALUI_VIDEOVISIBLE` | |
@@ -162,6 +171,8 @@ These definitions are found in `com.bmwgroup.connected.internal.ui.RhmiPropertyT
 | 53 | `CHECKED` | `true` `false` seen on toolbar buttons |
 | 55 | `UUID` | |
 | 56 | `MODAL` | An index from an enum with these values: [`NO_RESTRICTIONS`, `DISABLE_LEFT_SHIFT`, `DISABLE_STATE_REQUEST`, `DISABLE_LEFT_SHIFT_AND_STATE_REQUEST`] |
+
+Some properties, such as `ALIGNMENT` and `CUTTYPE` when applied to a List component, are observed to use a comma-separated list of numbers to apply their respective property to a specific column of the table.
 
 Some properties, such as `POSITION_X` and `POSITION_Y`, can contain a child node `<condition conditionType="LAYOUTBAG">`. This is perhaps to support dynamic positioning based on the size of the viewport. For example:
 
