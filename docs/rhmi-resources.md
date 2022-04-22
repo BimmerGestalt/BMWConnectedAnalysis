@@ -131,7 +131,7 @@ These definitions are found in `com.bmwgroup.connected.internal.ui.RhmiPropertyT
 | 5 | `TOOLBARHMISTATE_PAGING` | |
 | 6 | `LIST_COLUMNWIDTH` | `57,100,*` |
 | 7 | `LIST_HASIDCOLUMN` | |
-| 8 | `LABEL_WAITINGANIMATION` | |
+| 8 | `LABEL_WAITINGANIMATION` | `true` `false` |
 | 9 | `WIDTH` | `320` |
 | 10 | `HEIGHT` | `240` |
 | 11 | `TERMINALUI_VIDEOVIEWPORT` | |
