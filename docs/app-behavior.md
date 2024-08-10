@@ -83,35 +83,3 @@ External applications using the CarAPI are started with the `EXTRA_APPLICATION_C
 | `security_service` | int | The Service Intent name to reach the security service, such as `de.bmw.connected.na.SECURITY_SERVICE` |
 
 Notably, CarAPI apps do not connect directly to the Etch proxy port, but instead rely on an Intent-based RPC system to request that Connected manage the connection on their behalf. This RPC system has all the names intact, and may be a useful way to trace high-level behaviors into Etch requests.
-
-### Authentication
-
-```
-sequenceDiagram
-participant App as ConnectedApp
-participant Sign as CarSecurityService
-participant Car as CarEtchServer
-App --> Sign: Binder
-App --> Car: Etch
-App ->> Sign: initSecurityContext(packageName:String, appName:String)
-Note right of Sign: Preloads encrypted cert from SD card based on {packageName}/key.p7b
-Sign ->> App: contextHandle:long
-App ->> Sign: loadApplicationCert(contextHandle:long)
-Sign ->> App: cert:byte[]
-App ->> Car: sas_certificate(cert:byte[])
-Car ->> App: _result_sas_certificate(challenge:byte[])
-App ->> Sign: signChallenge(contextHandle:long, challenge:byte[])
-Sign ->> App: response:byte[]
-App ->> Car: sas_login(response:byte[])
-```
-{: class="mermaid"}
-
-Each Connected App has an individual P7B cert bundle. The first thing an app does, after connecting to the Etch service, is send this bundle to the car. The car returns a byte array of challenge data to the app, which must sign the challenge correctly and send it back to the car to authenticate.
-
-The BMW Connected app hosts an Android Binder service to provide a signing service for these challenges. Each app, when starting the authentication process with the car, first initiates an Binder RPC conversation with this provided service. The service name is always the `.SECURITY_SERVICE` class inside the main BMW Connected package, such as `com.bmwgroup.connected.bmw.usa.SECURITY_SERVICE` for BMW Connected Classic or `de.bmw.connected.na.SECURITY_SERVICE` for the new BMW Connected, and is explicitly broadcasted to CarAPI apps. The app then requests a security context, which loads up the P7B certificate bundle for the application by name and prepares the JNI/NDK security service to be ready to sign. The JNI/NDK service is given the package name, appname, and the cert bundle. After the app receives the security challenge, it asks the `CarSecurityService` to sign the challenge, passing the previously loaded security context and the authentication challenge. The returned signed response is handed directly to the car, to unlock access to the rest of the functionality.
-
-The BMW Connected Classic app, when it starts, extracts all of the APK Resources to the SD card. When written to the SD card, key.p7b file for each Connected App is symmetrically AES encrypted using utility methods in `com.bmwgroup.connected.car.util.CryptoUtil`. When the `CarSecurityService` is requested to load the cert, it checks that `{sdcard}/{applicationName.replaceAll("_", "\\.")}` exists and then tries to load the cert from `/{packageName.replaceAll("_", "\\.")}/key.p7b` and decrypts the cert. If either of those existence checks fail, it tries to load the cert from within the BMW Connected Classic assetManager, looking up `carapplications/{applicationName}/{applicationName}.p7b`.
-
-The AIDL for the BMW Connected `CarSecurityService` has been reconstructed [here](https://github.com/hufman/BMWConnectedAnalysis/tree/master/aidl/com/bmwgroup/connected/internal/ICarSecurityService.aidl). `createSecurityContext` requires that the given `packageName` is valid for the RPC client. `loadAppCert` returns a cert from somewhere, and doesn't seem to change based on `appName`. `signChallenge` returns the same responses for challenges as seen in packet captures, and isn't dependent on previous setup values.
-
-As of BMW/Mini Connected V5.1, the `SECURITY_SERVICE` is no longer exported to other processes in the `AndroidManifest.xml`.
