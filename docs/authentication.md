@@ -54,3 +54,11 @@ Some very important permissions are the ones starting with `SAS.Digests`. These 
 Another important permission is `Make`, which is a comma-separated list of car brands that will accept this cert for authentication. For example, all known RHMI app certs have either BMW or MINI, but the Toyota Supra only accepts certs with a Make of J29. This check can be disabled by coding `ENTWICKLER_MENUE=aktiv`.
 
 Typically, the APP cert is bundled with the 3rd-party application, and Connected internally merges it with the APP\_AUTH cert when connecting to the car and authenticating on the app's behalf.
+
+#### Challenge and Response
+
+After presenting the certificate in `sas_certificate`, the car will respond with a byte[16] challenge, and the client is expected to send the correct response to `sas_login(byte[512])`. First, the little-endian uint32 representing 2 is passed through MD5, and this is xor'd with the challenge ([xcat.py](https://github.com/mstrand/xcat/blob/master/xcat.py) is convenient for this example). The result is RSA-signed using the MD5 digest type and the key from the `APP_AUTH` certificate above (or the only given cert, for older certs without CertificateType).
+
+```
+$ echo -en "$challenge" | xcat.py -x `echo -en '\x02\x00\x00\x00' | openssl dgst -md5 -r | cut -c1-32` | openssl dgst -md5 -sign connection.key -hex
+```
