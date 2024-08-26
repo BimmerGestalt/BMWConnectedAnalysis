@@ -55,6 +55,8 @@ Another important permission is `Make`, which is a comma-separated list of car b
 
 Typically, the APP cert is bundled with the 3rd-party application, and Connected internally merges it with the APP\_AUTH cert when connecting to the car and authenticating on the app's behalf.
 
+Old certificates for iOS don't have this `SAS.CertificateType` attribute. These should be sent directly to the car, without being bundled with a connection certificate, and they provide the public key for the `signChallenge` response.
+
 #### Challenge and Response
 
 After presenting the certificate in `sas_certificate`, the car will respond with a byte[16] challenge, and the client is expected to send the correct response to `sas_login(byte[512])`. First, the little-endian uint32 representing 2 is passed through MD5, and this is xor'd with the challenge ([xcat.py](https://github.com/mstrand/xcat/blob/master/xcat.py) is convenient for this example). The result is RSA-signed using the MD5 digest type and the key from the `APP_AUTH` certificate above. For older certs that don't have a `SAS.CertificateType`, the xor step is skipped and the challenge is signed directly.
