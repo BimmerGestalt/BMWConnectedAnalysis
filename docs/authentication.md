@@ -57,7 +57,7 @@ Typically, the APP cert is bundled with the 3rd-party application, and Connected
 
 #### Challenge and Response
 
-After presenting the certificate in `sas_certificate`, the car will respond with a byte[16] challenge, and the client is expected to send the correct response to `sas_login(byte[512])`. First, the little-endian uint32 representing 2 is passed through MD5, and this is xor'd with the challenge ([xcat.py](https://github.com/mstrand/xcat/blob/master/xcat.py) is convenient for this example). The result is RSA-signed using the MD5 digest type and the key from the `APP_AUTH` certificate above (or the only given cert, for older certs without CertificateType).
+After presenting the certificate in `sas_certificate`, the car will respond with a byte[16] challenge, and the client is expected to send the correct response to `sas_login(byte[512])`. First, the little-endian uint32 representing 2 is passed through MD5, and this is xor'd with the challenge ([xcat.py](https://github.com/mstrand/xcat/blob/master/xcat.py) is convenient for this example). The result is RSA-signed using the MD5 digest type and the key from the `APP_AUTH` certificate above. For older certs that don't have a `SAS.CertificateType`, the xor step is skipped and the challenge is signed directly.
 
 ```
 $ echo -en "$challenge" | xcat.py -x `echo -en '\x02\x00\x00\x00' | openssl dgst -md5 -r | cut -c1-32` | openssl dgst -md5 -sign connection.key -hex
