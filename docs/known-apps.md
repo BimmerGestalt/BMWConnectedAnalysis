@@ -36,3 +36,16 @@ BMW Connected for Android included official support for hosting 3rd party applic
 | SmartThings Classic | OnlineServices v2 | ![](apps/smartthings-entrybutton.png) SmartThings | |
 | Spotify             | Multimedia v3     | ![](apps/spotify-entrybutton.png) Spotify         | |
  
+### BMW Connected Apps for Android
+
+BMW/Mini Connected includes its own RHMI apps, with their own unique resources. Connected Classic has even more apps. All of these apps exist within the OnlineServices menu, and some apps add extra entries.
+
+| Application | Entrybutton | Notes |
+| BMWOne | ![](apps/bmwconnected-entrybutton.png) BMW Connected | Call, Navigate, NotificationEvent, PopupHmiState, adds to Navigation menu |
+| Calendar | ![](apps/calendar-entrybutton.png) BMW Calendar | Call, Navigate, Has a CalendarHmiState, adds to the Office menu |
+| Audioplayer | ![](apps/classic-entrybutton.png) Audioplayer | Basecore v1 or v2 |
+| Analyzer | ![](apps/analyzer-entrybutton.png) ECO PRO Analyzer | |
+| News | ![](apps/news-entrybutton.png) News | Readout |
+| Online Search | ![](apps/onlinesearch-entrybutton.png) Online search | Call, Navigate, Only available for Mini |
+| Twitter | ![](apps/twitter-entrybutton.png) Twitter | Dictate, Readout |
+| Wikilocal | ![](apps/wikilocal-entrybutton.png) Wiki Local | Navigate, Readout, Only available for BMW |
