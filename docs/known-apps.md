@@ -26,6 +26,7 @@ BMW Connected for Android included official support for hosting 3rd party applic
 | Radio          | id4/id5/id6 v2 | 17be0ce | Call, EntICPlaylist, Input, Navigate |
 | Radio          | id4 v3         | 6add559 | Call, EntICPlaylist, Input, Navigate |
 | Radio          | id5/id6 v3     | 9928f4d | AudioHmiState, Call, EntICPlaylist, Input, Navigate |
+{: .known-apps-list}
 
 ### 3rd Party Android Apps
 
@@ -35,6 +36,7 @@ BMW Connected for Android included official support for hosting 3rd party applic
 | Pandora             | Radio v1          | ![](apps/pandora-entrybutton.png) Pandora         | Restricted to G11/G12 models |
 | SmartThings Classic | OnlineServices v2 | ![](apps/smartthings-entrybutton.png) SmartThings | |
 | Spotify             | Multimedia v3     | ![](apps/spotify-entrybutton.png) Spotify         | |
+{: .known-apps-list}
  
 ### BMW Connected Apps for Android
 
@@ -49,3 +51,4 @@ BMW/Mini Connected includes its own RHMI apps, with their own unique resources. 
 | Online Search | ![](apps/onlinesearch-entrybutton.png) Online search | Call, Navigate, Only available for Mini |
 | Twitter | ![](apps/twitter-entrybutton.png) Twitter | Dictate, Readout |
 | Wikilocal | ![](apps/wikilocal-entrybutton.png) Wiki Local | Navigate, Readout, Only available for BMW |
+{: .known-apps-list}

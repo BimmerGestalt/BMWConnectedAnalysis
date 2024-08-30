@@ -440,3 +440,7 @@ table td {
   font-size: 80%;
 }
 
+table.known-apps-list img {
+  background-color: #333;
+  height: 2em;
+}
