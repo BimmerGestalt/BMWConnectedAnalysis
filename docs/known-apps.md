@@ -43,7 +43,7 @@ BMW Connected for Android included official support for hosting 3rd party applic
 BMW/Mini Connected includes its own RHMI apps, with their own unique resources. Connected Classic has even more apps. All of these apps exist within the OnlineServices menu, and some apps add extra entries.
 
 | Application | Entrybutton | Notes |
-| BMWOne | ![](apps/bmwconnected-entrybutton.png) BMW Connected | Call, Navigate, NotificationEvent, PopupHmiState, adds to Navigation menu |
+| BMWOne | ![](apps/bmwconnected-entrybutton.png) BMW Connected | Call, Input, Navigate, NotificationEvent, PopupHmiState, adds to Navigation menu |
 | Calendar | ![](apps/calendar-entrybutton.png) BMW Calendar | Call, Navigate, Has a CalendarHmiState, adds to the Office menu |
 | Audioplayer | ![](apps/classic-entrybutton.png) Audioplayer | Basecore v1 or v2 |
 | Analyzer | ![](apps/analyzer-entrybutton.png) ECO PRO Analyzer | |
@@ -51,4 +51,17 @@ BMW/Mini Connected includes its own RHMI apps, with their own unique resources. 
 | Online Search | ![](apps/onlinesearch-entrybutton.png) Online search | Call, Navigate, Only available for Mini |
 | Twitter | ![](apps/twitter-entrybutton.png) Twitter | Dictate, Readout |
 | Wikilocal | ![](apps/wikilocal-entrybutton.png) Wiki Local | Navigate, Readout, Only available for BMW |
+{: .known-apps-list}
+
+### 3rd Party iOS Apps
+
+iOS apps use a different certificate authentication scheme, [documented here]({% link authentication.md %}). These are the 3rd party iOS apps I've found that still have the BMW resources in their IPA bundles, perhaps others might be found in archives.
+
+| Application | Category | Entrybutton | Notes |
+| Audible | Multimedia | ![](apps/audible-entrybutton.png) Audible | AudioHmiState, Call, Input, Navigate |
+| Glympse | OnlineServices | ![](apps/glympse-entrybutton.png) Glympse | Input |
+| Pandora | Radio | ![](apps/pandoraI-entrybutton.png) Pandora | Input |
+| Spotify | Multimedia | ![](apps/spotify-entrybutton.png) Spotify | Input |
+| Stitcher | Radio | ![](apps/stitcher-entrybutton.png) Stitcher | AudioHmiState, Call, Input, Navigate |
+| TuneInRadioPro | Radio | ![](apps/tunein-entrybutton.png) TuneIn | Input |
 {: .known-apps-list}
