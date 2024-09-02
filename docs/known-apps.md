@@ -43,8 +43,9 @@ BMW Connected for Android included official support for hosting 3rd party applic
 BMW/Mini Connected includes its own RHMI apps, with their own unique resources. Connected Classic has even more apps. All of these apps exist within the OnlineServices menu, and some apps add extra entries.
 
 | Application | Entrybutton | Notes |
-| BMWOne | ![](apps/bmwconnected-entrybutton.png) BMW Connected | Call, Input, Navigate, NotificationEvent, PopupHmiState, adds to Navigation menu |
-| Calendar | ![](apps/calendar-entrybutton.png) BMW Calendar | Call, Navigate, Has a CalendarHmiState, adds to the Office menu |
+| ----------- | ----------- | ----- |
+| BMWOne | ![](apps/bmwconnected-entrybutton.png) BMW Connected | Call, Input, Map (in BMW), Navigate, NotificationEvent, PopupHmiState, adds to Navigation menu |
+| Calendar | ![](apps/calendar-entrybutton.png) BMW Calendar | Call, Navigate, CalendarHmiState, adds to the Office menu |
 | Audioplayer | ![](apps/classic-entrybutton.png) Audioplayer | Basecore v1 or v2 |
 | Analyzer | ![](apps/analyzer-entrybutton.png) ECO PRO Analyzer | |
 | News | ![](apps/news-entrybutton.png) News | Readout |
@@ -58,6 +59,7 @@ BMW/Mini Connected includes its own RHMI apps, with their own unique resources. 
 iOS apps use a different certificate authentication scheme, [documented here]({% link authentication.md %}). These are the 3rd party iOS apps I've found that still have the BMW resources in their IPA bundles, perhaps others might be found in archives.
 
 | Application | Category | Entrybutton | Notes |
+| ----------- | -------- | ----------- | ----- |
 | Audible | Multimedia | ![](apps/audible-entrybutton.png) Audible | AudioHmiState, Call, Input, Navigate |
 | Glympse | OnlineServices | ![](apps/glympse-entrybutton.png) Glympse | Input |
 | Pandora | Radio | ![](apps/pandoraI-entrybutton.png) Pandora | Input |
@@ -65,3 +67,56 @@ iOS apps use a different certificate authentication scheme, [documented here]({%
 | Stitcher | Radio | ![](apps/stitcher-entrybutton.png) Stitcher | AudioHmiState, Call, Input, Navigate |
 | TuneInRadioPro | Radio | ![](apps/tunein-entrybutton.png) TuneIn | Input |
 {: .known-apps-list}
+
+### BMW Connected Apps for iOS
+
+BMW Connected is pretty similar between iOS and Android
+
+| Application | Category | Entrybutton | Notes |
+| ----------- | -------- | ----------- | ----- |
+| BMWOne | OnlineServices | ![](apps/bmwconnectedI-entrybutton.png) BMW Connected | Call, Input, Map, Navigate, NotificationEvent, PopupHmiState, adds to Navigation menu |
+| Calendar | OnlineServices | ![](apps/calendar-entrybutton.png) BMW Calendar | Call, Navigate, CalendarHmiState, does NOT add to Office Menu |
+{: .known-apps-list}
+
+### Mini Connected Classic for iOS
+
+Mini Connected Classic offered a lot of fun apps, though they changed over time:
+
+#### Mini Connected Classic 2.7.1
+
+| Application | Category | Entrybutton | Notes |
+| ----------- | -------- | ----------- | ----- |
+| DrivingExcitement | OnlineServices | ![](apps/miniclassic-entrybutton.png) Driving Excitement | Popup |
+| DynamicMusic | Multimedia | ![](apps/miniclassic-entrybutton.png) Dynamic Music | |
+| Facebook | OnlineServices | ![](apps/miniclassic-entrybutton.png) Facebook | Readout |
+| Foursquare | OnlineServices | ![](apps/miniclassic-entrybutton.png) Foursquare® | Navigate, Readout |
+| GoogleLocalSearch | OnlineServices | ![](apps/miniclassic-entrybutton.png) Online Search | Call, Navigate, Input |
+| MinimalismAnalyzer | OnlineServices | ![](apps/miniclassic-entrybutton.png) MINIMALISM | |
+| MissionControl | OnlineServices | ![](apps/miniclassic-entrybutton.png) Input, Mission Control | |
+| News | OnlineServices | ![](apps/miniclassic-entrybutton.png) News | Readout |
+| System | OnlineServices | [invisible] | Shows a popup when the phone battery is low |
+| Twitter | OnlineServices | ![](apps/miniclassic-entrybutton.png) Twitter | Input, Readout |
+| WebRadio | Radio | ![](apps/miniclassic-entrybutton.png) Web radio | Input, Popup |
+{: .known-apps-list}
+
+#### Mini Connected Classic 3.1.1
+
+| Application | Category | Entrybutton | Notes |
+| ----------- | -------- | ----------- | ----- |
+| FoceMeter | OnlineServices | ![](apps/miniclassic-entrybutton.png) Forcemeter | |
+| OnlineSearch | OnlineServices | ![](apps/miniclassic-entrybutton.png) Online Search | LocationInput |
+| Routes | OnlineServices | ![](apps/miniclassic-entrybutton.png) Streetwise | |
+| SportsInstruments | OnlineServices | ![](apps/miniclassic-entrybutton.png) Sports instruments | |
+| System | OnlineServices | [invisible] | Call, Navigate |
+{: .known-apps-list}
+
+### Invisible Apps
+
+There are other app certificates that do not add user-visible menus to the car, but instead enable other functionality:
+
+| Application | Notes |
+| ----------- | ----- |
+| ApplicationManager | Has a few CDS permissions set to writable, includes J29 support in MyBMW |
+| BMWOneAutoNav | Only to trigger navigation, no states |
+| CarTelemetryService | Has a few CDS permissions set to writable |
+| CDSBaseApp | MyBMW's CDS access, includes J29 support |
